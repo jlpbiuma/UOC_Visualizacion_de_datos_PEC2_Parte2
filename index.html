@@ -70,9 +70,11 @@
 
       const league = d => d.ancestors().find(a => a.depth === 1)?.data.id;
       const isTeam = d => !d.children;
+      const isGroup = d => d.children && !d.data.icon;
+      const GROUP = { w: 64, h: 22 };
       // Posición del centro de cada nodo: los escudos quedan justo fuera del final de su rama
       const point = d => d3.pointRadial(d.x, isTeam(d) ? ring + 6 + crest / 2 : d.y);
-      const size = d => (isTeam(d) ? crest : d.depth === 0 ? rootSize + 16 : d.depth === 1 ? leagueSize + 16 : 8);
+      const size = d => (isTeam(d) ? crest : d.depth === 0 ? rootSize + 16 : d.depth === 1 ? leagueSize + 16 : GROUP.h);
 
       const svg = d3.select(container).append('svg')
         .attr('width', width).attr('height', width)
@@ -99,9 +101,17 @@
         .attr('x', -crest / 2).attr('y', -crest / 2)
         .attr('width', crest).attr('height', crest);
 
-      // Grupos: un punto del color de la liga
-      nodes.filter(d => d.children && !d.data.icon).append('circle')
-        .attr('r', 4).attr('fill', d => COLORS[league(d)]).attr('stroke', '#fff').attr('stroke-width', 1.5);
+      // Grupos: etiqueta con el nombre sobre una píldora con el borde del color de la liga
+      const groups = nodes.filter(isGroup);
+      groups.append('rect')
+        .attr('x', -GROUP.w / 2).attr('y', -GROUP.h / 2)
+        .attr('width', GROUP.w).attr('height', GROUP.h).attr('rx', GROUP.h / 2)
+        .attr('fill', '#fff').attr('stroke', d => COLORS[league(d)]).attr('stroke-width', 1.5);
+      groups.append('text')
+        .attr('text-anchor', 'middle').attr('dy', '0.35em')
+        .attr('font-size', 11).attr('font-weight', 600)
+        .attr('fill', d => COLORS[league(d)])
+        .text(d => d.data.name);
 
       // Ligas y federación: logotipo sobre un disco blanco con el borde del color de la liga
       const hubs = nodes.filter(d => d.children && d.data.icon);
@@ -125,6 +135,7 @@
           nodes.attr('opacity', n => (path.has(n) ? 1 : 0.2));
           links.attr('opacity', l => (onPath(l) ? 1 : 0.12))
             .attr('stroke-width', l => (onPath(l) ? Math.max(2.5, baseWidth(l)) : baseWidth(l)));
+          if (isGroup(d)) return; // el grupo ya lleva su nombre escrito
           const [x, y] = point(d);
           tooltip.textContent = d.data.name;
           tooltip.classList.remove('hidden');

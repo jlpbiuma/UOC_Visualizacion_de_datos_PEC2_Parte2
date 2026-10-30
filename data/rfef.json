@@ -235,7 +235,7 @@
       "children": [
         {
           "id": "grupo1",
-          "name": "Grupo 1",
+          "name": "Grupo A",
           "children": [
             {
               "id": "arenas",
@@ -341,7 +341,7 @@
         },
         {
           "id": "grupo2",
-          "name": "Grupo 2",
+          "name": "Grupo B",
           "children": [
             {
               "id": "aguilas",

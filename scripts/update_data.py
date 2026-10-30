@@ -73,7 +73,7 @@ LEAGUES = [
     ]},
     # Liga dividida en grupos: RFEF → liga → grupo → equipos
     {"id": "federacion", "name": "Primera Federación", "wiki": "Primera Federación", "groups": [
-        ("grupo1", "Grupo 1", [
+        ("grupo1", "Grupo A", [
             ("arenas", "Arenas Club", "Arenas Club de Getxo"),
             ("aviles", "Real Avilés Industrial", "Real Avilés Industrial"),
             ("barakaldo", "Barakaldo CF", "Barakaldo CF"),
@@ -95,7 +95,7 @@ LEAGUES = [
             ("unionistas", "Unionistas de Salamanca", "Unionistas de Salamanca CF"),
             ("zamora", "Zamora CF", "Zamora CF"),
         ]),
-        ("grupo2", "Grupo 2", [
+        ("grupo2", "Grupo B", [
             ("aguilas", "Águilas FC", "Águilas FC"),
             ("alcorcon", "AD Alcorcón", "AD Alcorcón"),
             ("algeciras", "Algeciras CF", "Algeciras CF"),
