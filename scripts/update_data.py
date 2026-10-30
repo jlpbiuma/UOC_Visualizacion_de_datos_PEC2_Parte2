@@ -4,7 +4,8 @@ Equipos: artículos de Wikipedia «2026–27 La Liga», «2026–27 Segunda Divi
 Escudos de clubes: imagen principal (infobox) de cada artículo de la Wikipedia en inglés.
 Logos de liga: propiedad P154 (logotipo) de Wikidata, servida desde Wikimedia Commons, o la imagen
 principal del artículo de la liga en en.wikipedia cuando Wikidata no la tiene.
-Wikimedia limita la descarga de originales, así que se piden miniaturas en un tamaño estándar (THUMB).
+Wikimedia limita la descarga de originales, así que se piden miniaturas en tamaños estándar:
+THUMB para los logos centrales (RFEF y ligas) y CREST, más pequeño, para los escudos de los equipos.
 """
 import json
 import time
@@ -14,7 +15,9 @@ import urllib.request
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "data" / "rfef.json"
 ICONS = OUT.parent / "icons"
-THUMB = 250  # px; tamaños admitidos en https://www.mediawiki.org/wiki/Common_thumbnail_sizes
+# px; tamaños admitidos en https://www.mediawiki.org/wiki/Common_thumbnail_sizes
+THUMB = 250
+CREST = 120
 UA = {"User-Agent": "rfef-dendrograma/1.0 (UOC PEC2)", "Accept": "*/*"}
 
 ROOT = {"id": "rfef", "name": "Real Federación Española de Fútbol", "wiki": "Royal Spanish Football Federation"}
@@ -134,11 +137,11 @@ def api(base, **params):
     return json.loads(download(f"{base}?{urllib.parse.urlencode({'format': 'json', **params})}"))
 
 
-def wiki_images(titles):
+def wiki_images(titles, size=THUMB):
     """Miniatura de la imagen principal de cada artículo de en.wikipedia, por título pedido."""
     out = {}
     for i in range(0, len(titles), 40):
-        q = api("https://en.wikipedia.org/w/api.php", action="query", prop="pageimages", piprop="thumbnail", pithumbsize=THUMB,
+        q = api("https://en.wikipedia.org/w/api.php", action="query", prop="pageimages", piprop="thumbnail", pithumbsize=size,
                 pilicense="any", redirects=1, titles="|".join(titles[i:i + 40]))["query"]
         alias = {r["to"]: r["from"] for r in q.get("redirects", []) + q.get("normalized", [])}
         for p in q["pages"].values():
@@ -175,9 +178,10 @@ def main():
     ICONS.mkdir(parents=True, exist_ok=True)
     titles = [ROOT["wiki"]] + [lg["wiki"] for lg in LEAGUES if "wiki" in lg] + [t[2] for lg in LEAGUES for t in all_teams(lg)]
     images = wiki_images(titles)
+    crests = wiki_images(titles, CREST)
 
     def teams(rows):
-        return [{"id": tid, "name": name, "icon": save_icon(tid, images[wiki])} for tid, name, wiki in rows]
+        return [{"id": tid, "name": name, "icon": save_icon(tid, crests[wiki])} for tid, name, wiki in rows]
 
     tree = {"id": ROOT["id"], "name": ROOT["name"], "icon": save_icon(ROOT["id"], images[ROOT["wiki"]]), "children": []}
     for lg in LEAGUES:

@@ -2,112 +2,112 @@
   "season": "2026-27",
   "id": "rfef",
   "name": "Real Federación Española de Fútbol",
-  "icon": "data/icons/rfef.svg",
+  "icon": "data/icons/rfef.png",
   "children": [
     {
       "id": "laliga",
       "name": "LaLiga EA Sports",
-      "icon": "data/icons/laliga.svg",
+      "icon": "data/icons/laliga.png",
       "children": [
         {
           "id": "alaves",
           "name": "Deportivo Alavés",
-          "icon": "data/icons/alaves.svg"
+          "icon": "data/icons/alaves.png"
         },
         {
           "id": "athletic",
           "name": "Athletic Club",
-          "icon": "data/icons/athletic.svg"
+          "icon": "data/icons/athletic.png"
         },
         {
           "id": "atletico",
           "name": "Atlético de Madrid",
-          "icon": "data/icons/atletico.svg"
+          "icon": "data/icons/atletico.png"
         },
         {
           "id": "barcelona",
           "name": "FC Barcelona",
-          "icon": "data/icons/barcelona.svg"
+          "icon": "data/icons/barcelona.png"
         },
         {
           "id": "betis",
           "name": "Real Betis",
-          "icon": "data/icons/betis.svg"
+          "icon": "data/icons/betis.png"
         },
         {
           "id": "celta",
           "name": "RC Celta",
-          "icon": "data/icons/celta.svg"
+          "icon": "data/icons/celta.png"
         },
         {
           "id": "deportivo",
           "name": "RC Deportivo",
-          "icon": "data/icons/deportivo.svg"
+          "icon": "data/icons/deportivo.png"
         },
         {
           "id": "elche",
           "name": "Elche CF",
-          "icon": "data/icons/elche.svg"
+          "icon": "data/icons/elche.png"
         },
         {
           "id": "espanyol",
           "name": "RCD Espanyol",
-          "icon": "data/icons/espanyol.svg"
+          "icon": "data/icons/espanyol.png"
         },
         {
           "id": "getafe",
           "name": "Getafe CF",
-          "icon": "data/icons/getafe.svg"
+          "icon": "data/icons/getafe.png"
         },
         {
           "id": "levante",
           "name": "Levante UD",
-          "icon": "data/icons/levante.svg"
+          "icon": "data/icons/levante.png"
         },
         {
           "id": "malaga",
           "name": "Málaga CF",
-          "icon": "data/icons/malaga.svg"
+          "icon": "data/icons/malaga.png"
         },
         {
           "id": "osasuna",
           "name": "CA Osasuna",
-          "icon": "data/icons/osasuna.svg"
+          "icon": "data/icons/osasuna.png"
         },
         {
           "id": "racing",
           "name": "Racing de Santander",
-          "icon": "data/icons/racing.svg"
+          "icon": "data/icons/racing.png"
         },
         {
           "id": "rayo",
           "name": "Rayo Vallecano",
-          "icon": "data/icons/rayo.svg"
+          "icon": "data/icons/rayo.png"
         },
         {
           "id": "realmadrid",
           "name": "Real Madrid",
-          "icon": "data/icons/realmadrid.svg"
+          "icon": "data/icons/realmadrid.png"
         },
         {
           "id": "realsociedad",
           "name": "Real Sociedad",
-          "icon": "data/icons/realsociedad.svg"
+          "icon": "data/icons/realsociedad.png"
         },
         {
           "id": "sevilla",
           "name": "Sevilla FC",
-          "icon": "data/icons/sevilla.svg"
+          "icon": "data/icons/sevilla.png"
         },
         {
           "id": "valencia",
           "name": "Valencia CF",
-          "icon": "data/icons/valencia.svg"
+          "icon": "data/icons/valencia.png"
         },
         {
           "id": "villarreal",
           "name": "Villarreal CF",
-          "icon": "data/icons/villarreal.svg"
+          "icon": "data/icons/villarreal.png"
         }
       ]
     },
