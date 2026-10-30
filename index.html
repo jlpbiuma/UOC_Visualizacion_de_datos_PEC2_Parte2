@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fútbol español 2026-27</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    #chart .node { transition: opacity .2s; }
+    #chart .link { transition: opacity .2s, stroke-width .2s; }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <main class="mx-auto max-w-6xl px-4 py-12 sm:px-8 sm:py-16">
+    <header class="mb-10 text-center">
+      <h1 class="text-3xl font-semibold tracking-tight sm:text-4xl">Fútbol español</h1>
+    </header>
+
+    <section>
+      <h2 id="chart-title" class="text-center text-base font-medium text-slate-500">&nbsp;</h2>
+      <div id="chart" class="relative mx-auto mt-6 w-full max-w-5xl">
+        <div id="tooltip" class="pointer-events-none absolute z-10 hidden whitespace-nowrap rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium shadow-sm"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Un color por liga para las ramas del dendrograma
+    const COLORS = { laliga: '#e4572e', hypermotion: '#2b7bb9', federacion: '#2f9e6a' };
+
+    fetch('data/rfef.json')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('chart-title').textContent = `Ligas nacionales · ${data.season}`;
+        const draw = () => drawChart(data);
+        draw();
+        new ResizeObserver(draw).observe(document.getElementById('chart'));
+      });
+
+    function drawChart(data) {
+      const container = document.getElementById('chart');
+      const tooltip = document.getElementById('tooltip');
+      const width = container.clientWidth;
+      if (!width || width === drawChart.lastWidth) return;
+      drawChart.lastWidth = width;
+      d3.select(container).select('svg').remove();
+
+      const root = d3.hierarchy(data);
+      const leaves = root.leaves().length;
+      // Escudo de equipo tan grande como permita el perímetro, sin pisarse
+      const crest = Math.max(8, Math.min(40, (Math.PI * width) / (leaves + 6) * 0.85));
+      const radius = width / 2 - crest / 2 - 4;
+      const ring = radius - crest / 2 - 6; // donde terminan las ramas
+      const leagueSize = Math.max(32, crest * 1.8);
+      const rootSize = Math.max(44, crest * 2.3);
+
+      d3.cluster()
+        .size([2 * Math.PI, ring])
+        .separation((a, b) => (a.parent === b.parent ? 1 : 1.6))(root);
+      // Ligas a medio camino entre la federación y los equipos; los grupos, más cerca de sus equipos
+      root.descendants().forEach(d => {
+        if (d.depth === 1) d.y = ring * 0.4;
+        else if (d.depth === 2 && d.children) d.y = ring * 0.72;
+      });
+
+      const league = d => d.ancestors().find(a => a.depth === 1)?.data.id;
+      const isTeam = d => !d.children;
+      // Posición del centro de cada nodo: los escudos quedan justo fuera del final de su rama
+      const point = d => d3.pointRadial(d.x, isTeam(d) ? ring + 6 + crest / 2 : d.y);
+      const size = d => (isTeam(d) ? crest : d.depth === 0 ? rootSize + 16 : d.depth === 1 ? leagueSize + 16 : 8);
+
+      const svg = d3.select(container).append('svg')
+        .attr('width', width).attr('height', width)
+        .attr('viewBox', [-width / 2, -width / 2, width, width])
+        .attr('role', 'img')
+        .attr('aria-label', `Dendrograma: ${data.name}, ${root.children.map(d => d.data.name).join(', ')}`);
+
+      const baseWidth = l => (l.source.depth === 0 ? 2.5 : l.target.children ? 1.75 : 1);
+      const links = svg.append('g').attr('fill', 'none').attr('stroke-linecap', 'round')
+        .selectAll('path').data(root.links()).join('path')
+        .attr('class', 'link')
+        .attr('stroke', d => COLORS[league(d.target)])
+        .attr('stroke-opacity', d => (d.target.children ? 0.9 : 0.5))
+        .attr('stroke-width', baseWidth)
+        .attr('d', d3.linkRadial().angle(d => d.x).radius(d => d.y));
+
+      const nodes = svg.append('g').selectAll('g').data(root.descendants()).join('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${point(d)})`);
+
+      // Equipos: escudo en el extremo de cada rama
+      nodes.filter(isTeam).append('image')
+        .attr('href', d => d.data.icon)
+        .attr('x', -crest / 2).attr('y', -crest / 2)
+        .attr('width', crest).attr('height', crest);
+
+      // Grupos: un punto del color de la liga
+      nodes.filter(d => d.children && !d.data.icon).append('circle')
+        .attr('r', 4).attr('fill', d => COLORS[league(d)]).attr('stroke', '#fff').attr('stroke-width', 1.5);
+
+      // Ligas y federación: logotipo sobre un disco blanco con el borde del color de la liga
+      const hubs = nodes.filter(d => d.children && d.data.icon);
+      const logo = d => (d.depth ? leagueSize : rootSize);
+      hubs.append('circle')
+        .attr('r', d => size(d) / 2)
+        .attr('fill', '#fff')
+        .attr('stroke', d => (d.depth ? COLORS[d.data.id] : '#e2e8f0'))
+        .attr('stroke-width', d => (d.depth ? 2 : 1));
+      hubs.append('image')
+        .attr('href', d => d.data.icon)
+        .attr('x', d => -logo(d) / 2).attr('y', d => -logo(d) / 2)
+        .attr('width', logo).attr('height', logo);
+
+      // Hover: resalta la rama hasta la federación y muestra el nombre
+      nodes
+        .style('cursor', 'default')
+        .on('pointerenter', (event, d) => {
+          const path = new Set(d.ancestors().concat(d.descendants()));
+          const onPath = l => path.has(l.target) && path.has(l.source);
+          nodes.attr('opacity', n => (path.has(n) ? 1 : 0.2));
+          links.attr('opacity', l => (onPath(l) ? 1 : 0.12))
+            .attr('stroke-width', l => (onPath(l) ? Math.max(2.5, baseWidth(l)) : baseWidth(l)));
+          const [x, y] = point(d);
+          tooltip.textContent = d.data.name;
+          tooltip.classList.remove('hidden');
+          tooltip.style.left = `${Math.min(width - tooltip.offsetWidth, Math.max(0, width / 2 + x - tooltip.offsetWidth / 2))}px`;
+          tooltip.style.top = `${width / 2 + y - size(d) / 2 - tooltip.offsetHeight - 8}px`;
+        })
+        .on('pointerleave', () => {
+          nodes.attr('opacity', 1);
+          links.attr('opacity', 1).attr('stroke-width', baseWidth);
+          tooltip.classList.add('hidden');
+        });
+    }
+  </script>
+</body>
+</html>

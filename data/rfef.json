@@ -1,0 +1,451 @@
+{
+  "season": "2026-27",
+  "id": "rfef",
+  "name": "Real Federación Española de Fútbol",
+  "icon": "data/icons/rfef.svg",
+  "children": [
+    {
+      "id": "laliga",
+      "name": "LaLiga EA Sports",
+      "icon": "data/icons/laliga.svg",
+      "children": [
+        {
+          "id": "alaves",
+          "name": "Deportivo Alavés",
+          "icon": "data/icons/alaves.svg"
+        },
+        {
+          "id": "athletic",
+          "name": "Athletic Club",
+          "icon": "data/icons/athletic.svg"
+        },
+        {
+          "id": "atletico",
+          "name": "Atlético de Madrid",
+          "icon": "data/icons/atletico.svg"
+        },
+        {
+          "id": "barcelona",
+          "name": "FC Barcelona",
+          "icon": "data/icons/barcelona.svg"
+        },
+        {
+          "id": "betis",
+          "name": "Real Betis",
+          "icon": "data/icons/betis.svg"
+        },
+        {
+          "id": "celta",
+          "name": "RC Celta",
+          "icon": "data/icons/celta.svg"
+        },
+        {
+          "id": "deportivo",
+          "name": "RC Deportivo",
+          "icon": "data/icons/deportivo.svg"
+        },
+        {
+          "id": "elche",
+          "name": "Elche CF",
+          "icon": "data/icons/elche.svg"
+        },
+        {
+          "id": "espanyol",
+          "name": "RCD Espanyol",
+          "icon": "data/icons/espanyol.svg"
+        },
+        {
+          "id": "getafe",
+          "name": "Getafe CF",
+          "icon": "data/icons/getafe.svg"
+        },
+        {
+          "id": "levante",
+          "name": "Levante UD",
+          "icon": "data/icons/levante.svg"
+        },
+        {
+          "id": "malaga",
+          "name": "Málaga CF",
+          "icon": "data/icons/malaga.svg"
+        },
+        {
+          "id": "osasuna",
+          "name": "CA Osasuna",
+          "icon": "data/icons/osasuna.svg"
+        },
+        {
+          "id": "racing",
+          "name": "Racing de Santander",
+          "icon": "data/icons/racing.svg"
+        },
+        {
+          "id": "rayo",
+          "name": "Rayo Vallecano",
+          "icon": "data/icons/rayo.svg"
+        },
+        {
+          "id": "realmadrid",
+          "name": "Real Madrid",
+          "icon": "data/icons/realmadrid.svg"
+        },
+        {
+          "id": "realsociedad",
+          "name": "Real Sociedad",
+          "icon": "data/icons/realsociedad.svg"
+        },
+        {
+          "id": "sevilla",
+          "name": "Sevilla FC",
+          "icon": "data/icons/sevilla.svg"
+        },
+        {
+          "id": "valencia",
+          "name": "Valencia CF",
+          "icon": "data/icons/valencia.svg"
+        },
+        {
+          "id": "villarreal",
+          "name": "Villarreal CF",
+          "icon": "data/icons/villarreal.svg"
+        }
+      ]
+    },
+    {
+      "id": "hypermotion",
+      "name": "LaLiga Hypermotion",
+      "icon": "data/icons/hypermotion.png",
+      "children": [
+        {
+          "id": "albacete",
+          "name": "Albacete BP",
+          "icon": "data/icons/albacete.png"
+        },
+        {
+          "id": "almeria",
+          "name": "UD Almería",
+          "icon": "data/icons/almeria.png"
+        },
+        {
+          "id": "andorra",
+          "name": "FC Andorra",
+          "icon": "data/icons/andorra.png"
+        },
+        {
+          "id": "burgos",
+          "name": "Burgos CF",
+          "icon": "data/icons/burgos.png"
+        },
+        {
+          "id": "cadiz",
+          "name": "Cádiz CF",
+          "icon": "data/icons/cadiz.png"
+        },
+        {
+          "id": "castellon",
+          "name": "CD Castellón",
+          "icon": "data/icons/castellon.png"
+        },
+        {
+          "id": "celtafortuna",
+          "name": "Celta Fortuna",
+          "icon": "data/icons/celtafortuna.png"
+        },
+        {
+          "id": "ceuta",
+          "name": "AD Ceuta",
+          "icon": "data/icons/ceuta.png"
+        },
+        {
+          "id": "cordoba",
+          "name": "Córdoba CF",
+          "icon": "data/icons/cordoba.png"
+        },
+        {
+          "id": "eibar",
+          "name": "SD Eibar",
+          "icon": "data/icons/eibar.png"
+        },
+        {
+          "id": "eldense",
+          "name": "CD Eldense",
+          "icon": "data/icons/eldense.png"
+        },
+        {
+          "id": "girona",
+          "name": "Girona FC",
+          "icon": "data/icons/girona.png"
+        },
+        {
+          "id": "granada",
+          "name": "Granada CF",
+          "icon": "data/icons/granada.png"
+        },
+        {
+          "id": "laspalmas",
+          "name": "UD Las Palmas",
+          "icon": "data/icons/laspalmas.png"
+        },
+        {
+          "id": "leganes",
+          "name": "CD Leganés",
+          "icon": "data/icons/leganes.png"
+        },
+        {
+          "id": "mallorca",
+          "name": "RCD Mallorca",
+          "icon": "data/icons/mallorca.png"
+        },
+        {
+          "id": "oviedo",
+          "name": "Real Oviedo",
+          "icon": "data/icons/oviedo.png"
+        },
+        {
+          "id": "realsociedadb",
+          "name": "Real Sociedad B",
+          "icon": "data/icons/realsociedadb.png"
+        },
+        {
+          "id": "sabadell",
+          "name": "CE Sabadell",
+          "icon": "data/icons/sabadell.png"
+        },
+        {
+          "id": "sporting",
+          "name": "Sporting de Gijón",
+          "icon": "data/icons/sporting.png"
+        },
+        {
+          "id": "tenerife",
+          "name": "CD Tenerife",
+          "icon": "data/icons/tenerife.png"
+        },
+        {
+          "id": "valladolid",
+          "name": "Real Valladolid",
+          "icon": "data/icons/valladolid.png"
+        }
+      ]
+    },
+    {
+      "id": "federacion",
+      "name": "Primera Federación",
+      "icon": "data/icons/federacion.png",
+      "children": [
+        {
+          "id": "grupo1",
+          "name": "Grupo 1",
+          "children": [
+            {
+              "id": "arenas",
+              "name": "Arenas Club",
+              "icon": "data/icons/arenas.png"
+            },
+            {
+              "id": "aviles",
+              "name": "Real Avilés Industrial",
+              "icon": "data/icons/aviles.png"
+            },
+            {
+              "id": "barakaldo",
+              "name": "Barakaldo CF",
+              "icon": "data/icons/barakaldo.png"
+            },
+            {
+              "id": "bilbaoathletic",
+              "name": "Bilbao Athletic",
+              "icon": "data/icons/bilbaoathletic.png"
+            },
+            {
+              "id": "cacereno",
+              "name": "CP Cacereño",
+              "icon": "data/icons/cacereno.png"
+            },
+            {
+              "id": "coria",
+              "name": "CD Coria",
+              "icon": "data/icons/coria.png"
+            },
+            {
+              "id": "cultural",
+              "name": "Cultural Leonesa",
+              "icon": "data/icons/cultural.png"
+            },
+            {
+              "id": "fabril",
+              "name": "RC Deportivo Fabril",
+              "icon": "data/icons/fabril.png"
+            },
+            {
+              "id": "extremadura",
+              "name": "CD Extremadura",
+              "icon": "data/icons/extremadura.png"
+            },
+            {
+              "id": "logrones",
+              "name": "UD Logroñés",
+              "icon": "data/icons/logrones.png"
+            },
+            {
+              "id": "lugo",
+              "name": "CD Lugo",
+              "icon": "data/icons/lugo.png"
+            },
+            {
+              "id": "merida",
+              "name": "AD Mérida",
+              "icon": "data/icons/merida.png"
+            },
+            {
+              "id": "mirandes",
+              "name": "CD Mirandés",
+              "icon": "data/icons/mirandes.png"
+            },
+            {
+              "id": "ourense",
+              "name": "UD Ourense",
+              "icon": "data/icons/ourense.png"
+            },
+            {
+              "id": "ponferradina",
+              "name": "SD Ponferradina",
+              "icon": "data/icons/ponferradina.png"
+            },
+            {
+              "id": "pontevedra",
+              "name": "Pontevedra CF",
+              "icon": "data/icons/pontevedra.png"
+            },
+            {
+              "id": "ferrol",
+              "name": "Racing de Ferrol",
+              "icon": "data/icons/ferrol.png"
+            },
+            {
+              "id": "realunion",
+              "name": "Real Unión",
+              "icon": "data/icons/realunion.png"
+            },
+            {
+              "id": "unionistas",
+              "name": "Unionistas de Salamanca",
+              "icon": "data/icons/unionistas.png"
+            },
+            {
+              "id": "zamora",
+              "name": "Zamora CF",
+              "icon": "data/icons/zamora.png"
+            }
+          ]
+        },
+        {
+          "id": "grupo2",
+          "name": "Grupo 2",
+          "children": [
+            {
+              "id": "aguilas",
+              "name": "Águilas FC",
+              "icon": "data/icons/aguilas.png"
+            },
+            {
+              "id": "alcorcon",
+              "name": "AD Alcorcón",
+              "icon": "data/icons/alcorcon.png"
+            },
+            {
+              "id": "algeciras",
+              "name": "Algeciras CF",
+              "icon": "data/icons/algeciras.png"
+            },
+            {
+              "id": "antequera",
+              "name": "Antequera CF",
+              "icon": "data/icons/antequera.png"
+            },
+            {
+              "id": "atleticomadrileno",
+              "name": "Atlético Madrileño",
+              "icon": "data/icons/atleticomadrileno.png"
+            },
+            {
+              "id": "cartagena",
+              "name": "FC Cartagena",
+              "icon": "data/icons/cartagena.png"
+            },
+            {
+              "id": "europa",
+              "name": "CE Europa",
+              "icon": "data/icons/europa.png"
+            },
+            {
+              "id": "gimnastic",
+              "name": "Gimnàstic de Tarragona",
+              "icon": "data/icons/gimnastic.png"
+            },
+            {
+              "id": "hercules",
+              "name": "Hércules CF",
+              "icon": "data/icons/hercules.png"
+            },
+            {
+              "id": "huesca",
+              "name": "SD Huesca",
+              "icon": "data/icons/huesca.png"
+            },
+            {
+              "id": "ibiza",
+              "name": "UD Ibiza",
+              "icon": "data/icons/ibiza.png"
+            },
+            {
+              "id": "jaen",
+              "name": "Real Jaén",
+              "icon": "data/icons/jaen.png"
+            },
+            {
+              "id": "torremolinos",
+              "name": "Juventud de Torremolinos",
+              "icon": "data/icons/torremolinos.png"
+            },
+            {
+              "id": "murcia",
+              "name": "Real Murcia",
+              "icon": "data/icons/murcia.png"
+            },
+            {
+              "id": "majadahonda",
+              "name": "Rayo Majadahonda",
+              "icon": "data/icons/majadahonda.png"
+            },
+            {
+              "id": "castilla",
+              "name": "Real Madrid Castilla",
+              "icon": "data/icons/castilla.png"
+            },
+            {
+              "id": "santandreu",
+              "name": "UE Sant Andreu",
+              "icon": "data/icons/santandreu.png"
+            },
+            {
+              "id": "teruel",
+              "name": "CD Teruel",
+              "icon": "data/icons/teruel.png"
+            },
+            {
+              "id": "villarrealb",
+              "name": "Villarreal CF B",
+              "icon": "data/icons/villarrealb.png"
+            },
+            {
+              "id": "zaragoza",
+              "name": "Real Zaragoza",
+              "icon": "data/icons/zaragoza.png"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
